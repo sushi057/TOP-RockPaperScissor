@@ -43,14 +43,14 @@ function game(){
     var computerScore = 0;
     var playerScore = 0;
 
-    for (var i=0; i<5; i++){
-        if(playRound() == 1){
-            playerScore += 1;
-        }
-        else{
-            computerScore += 1;
-        }
-    }
+    // for (var i=0; i<5; i++){
+    //     if(playRound() == 1){
+    //         playerScore += 1;
+    //     }
+    //     else{
+    //         computerScore += 1;
+    //     }
+    // }
 
     if (computerScore > playerScore){
         console.log('Computer Wins');
