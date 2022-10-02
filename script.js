@@ -1,6 +1,10 @@
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissor = document.querySelector('.scissor');
+let pcChoice = document.querySelector('#computer-choice');
+let pScore = document.querySelector('#pscore');
+let cScore = document.querySelector('#cscore');
+let winner = document.querySelector('#winner');
 
 function computerChoice(){
     hands = ['rock', 'paper', 'scissor'];
@@ -11,11 +15,12 @@ function computerChoice(){
 function playRound(playerSelection, computerSelection){
     playerSelection = prompt("Choose Rock, Paper or Scissor!");
     computerSelection = computerChoice();
+    pcChoice.textContent = computerChoice();    
 
     var player = playerSelection.toUpperCase();
     var computer = computerSelection.toUpperCase();
 
-    if(){
+    if(rock.addEventListener('click')){
         if (computer == "PAPER"){
             return 0;
         }
@@ -24,7 +29,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
 
-    if (player == "PAPER"){
+    if (paper.addEventListener('click',)){
         if(computer == "ROCK"){
             return 1;
         }
@@ -33,7 +38,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
 
-    if (player == "SCISSOR"){
+    if (scissor.addEventListener('click')){
         if(computer == "PAPER"){
             return 1;
         }
@@ -67,7 +72,6 @@ function game(){
     }
 }
 
-rock.addEventListener('click', )
 
 game();
 
