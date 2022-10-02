@@ -49,6 +49,11 @@ img:hover{
     border: 8px rgb(187, 187, 187) solid;
 }
 
+#status{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 .result{
     display: flex;
     flex-direction: row;

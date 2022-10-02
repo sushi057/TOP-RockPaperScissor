@@ -1,3 +1,7 @@
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissor = document.querySelector('.scissor');
+
 function computerChoice(){
     hands = ['rock', 'paper', 'scissor'];
     computerHand = Math.floor(Math.random() * hands.length);
@@ -11,7 +15,7 @@ function playRound(playerSelection, computerSelection){
     var player = playerSelection.toUpperCase();
     var computer = computerSelection.toUpperCase();
 
-    if(player == "ROCK"){
+    if(){
         if (computer == "PAPER"){
             return 0;
         }
@@ -63,4 +67,7 @@ function game(){
     }
 }
 
+rock.addEventListener('click', )
+
 game();
+
