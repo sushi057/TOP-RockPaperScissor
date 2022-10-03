@@ -80,3 +80,48 @@
 
 // game();
 
+//Steps
+// 1. “choose one”
+// 2. click on icon/image
+// 3. then the round plays and the algorithm runs
+// 4. the function gives 0 or 1 for the result
+// 5. the return value is used to for value
+// 6. finally values are compared and the winner is decided
+
+
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissor = document.querySelector('.scissor');
+let pcChoice = document.querySelector('#computer-choice');
+let pScore = document.querySelector('#pscore');
+let cScore = document.querySelector('#cscore');
+let winner = document.querySelector('#winner');
+
+
+function computerChoice(){
+    hands = ['rock', 'paper', 'scissor'];
+    index = Math.floor(Math.random() * hands.length);
+    return hands[index];
+}
+
+//function to play follow up to the event listener
+function game(){
+    const computerHand = computerChoice();
+    let playerHand = 'string';
+
+    rock.addEventListener('click', function(){ 
+        playerHand = 'ROCK';
+    });
+
+    paper.addEventListener('click', function(){
+        playerHand = 'PAPER';
+    });
+
+    scissor.addEventListener('click', function(){
+        playerHand = 'SCISSOR';
+    });
+}
+
+rock.addEventListener('click', game());
+paper.addEventListener('click', game());
+scissor.addEventListener('click', game());
