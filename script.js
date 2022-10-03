@@ -14,20 +14,18 @@ function computerChoice(){
 }
 
 function computerDecision(){
-    pcChoice.textContent = computerChoice();
-    console.log(computerChoice());
+    const computersChoice = computerChoice();
+    pcChoice.textContent = computersChoice;
+    console.log(computersChoice);
 }
 
-function playRound(playerSelection, computerSelection){
-    playerSelection = prompt("Choose Rock, Paper or Scissor!");
+function playRound(computerSelection){
     computerSelection = computerChoice();
-    
+    pcChoice.textContent = computerSelection;
 
-    let player = playerSelection.toUpperCase();
     let computer = computerSelection.toUpperCase();
 
-    if(rock.addEventListener('click', computerDecision())){
-        console.log('lol muji');
+    if(rock.addEventListener('click', computerDecision)){
         if (computer == "PAPER"){
             return 0;
         }
@@ -36,7 +34,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
 
-    if (paper.addEventListener('click',)){
+    if (paper.addEventListener('click', computerDecision)){
         if(computer == "ROCK"){
             return 1;
         }
@@ -45,7 +43,7 @@ function playRound(playerSelection, computerSelection){
         }
     }
 
-    if (scissor.addEventListener('click')){
+    if (scissor.addEventListener('click', computerDecision)){
         if(computer == "PAPER"){
             return 1;
         }
@@ -59,24 +57,15 @@ function game(){
     var computerScore = 0;
     var playerScore = 0;
 
-    // for (var i=0; i<5; i++){
-    //     if(playRound() == 1){
-    //         playerScore += 1;
-    //     }
-    //     else{
-    //         computerScore += 1;
-    //     }
-    // }
+    for (var i=0; i<5; i++){
+        if(playRound() == 1){
+            playerScore += 1;
+        }
+        else{
+            computerScore += 1;
+        }
+    }
 
-    if (computerScore > playerScore){
-        console.log('Computer Wins');
-    }
-    else if(computerScore == playerScore){
-        console.log("ITS A TIE!");
-    }
-    else {
-        console.log("Player Wins!");
-    }
 }
 
 
