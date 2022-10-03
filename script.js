@@ -6,21 +6,28 @@ let pScore = document.querySelector('#pscore');
 let cScore = document.querySelector('#cscore');
 let winner = document.querySelector('#winner');
 
+
 function computerChoice(){
     hands = ['rock', 'paper', 'scissor'];
     computerHand = Math.floor(Math.random() * hands.length);
     return hands[computerHand];
 }
 
+function computerDecision(){
+    pcChoice.textContent = computerChoice();
+    console.log(computerChoice());
+}
+
 function playRound(playerSelection, computerSelection){
     playerSelection = prompt("Choose Rock, Paper or Scissor!");
     computerSelection = computerChoice();
-    pcChoice.textContent = computerChoice();    
+    
 
-    var player = playerSelection.toUpperCase();
-    var computer = computerSelection.toUpperCase();
+    let player = playerSelection.toUpperCase();
+    let computer = computerSelection.toUpperCase();
 
-    if(rock.addEventListener('click')){
+    if(rock.addEventListener('click', computerDecision())){
+        console.log('lol muji');
         if (computer == "PAPER"){
             return 0;
         }
