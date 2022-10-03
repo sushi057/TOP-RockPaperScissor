@@ -16,12 +16,12 @@ function computerChoice(){
 function computerDecision(){
     const computersChoice = computerChoice();
     pcChoice.textContent = computersChoice;
-    console.log(computersChoice);
+    console.log(computersChoice);  //to check the choice
+    return computersChoice;
 }
 
-function playRound(computerSelection){
-    computerSelection = computerChoice();
-    let computer = computerSelection.toUpperCase();
+function playRound(){
+    let computer = computerDecision().toUpperCase();
 
     if(rock.addEventListener('click', computerDecision)){
         if (computer == "PAPER"){
@@ -52,20 +52,30 @@ function playRound(computerSelection){
 }
 
 function game(){
-    var computerScore = 0;
-    var playerScore = 0;
+    let computerScore = 0;
+    let playerScore = 0;
 
-    for (var i=0; i<5; i++){
+    for (let i=0; i<5; i++){
         if(playRound() == 1){
             playerScore += 1;
-            pScore = playerScore;
+            pScore.textContent = playerScore;
         }
-        else{
+        else if(playRound() == 0){
             computerScore += 1;
-            cScore = computerScore;
+            cScore.textContent = computerScore;
         }
     }
 
+    //final decision algorithm
+    if(computerScore == playerScore){
+        winner.textContent = 'Nobody';
+    }
+    else if(computerScore > playerScore){
+        winner.textContent = 'Computer'
+    }
+    else{
+        winner.textContent = 'Player';
+    }
 }
 
 game();
