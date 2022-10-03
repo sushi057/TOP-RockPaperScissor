@@ -1,94 +1,3 @@
-// const rock = document.querySelector('.rock');
-// const paper = document.querySelector('.paper');
-// const scissor = document.querySelector('.scissor');
-// let pcChoice = document.querySelector('#computer-choice');
-// let pScore = document.querySelector('#pscore');
-// let cScore = document.querySelector('#cscore');
-// let winner = document.querySelector('#winner');
-
-
-// function computerChoice(){
-//     hands = ['rock', 'paper', 'scissor'];
-//     computerHand = Math.floor(Math.random() * hands.length);
-//     return hands[computerHand];
-// }
-
-// function computerDecision(){
-//     const computersChoice = computerChoice();
-//     pcChoice.textContent = computersChoice;
-//     console.log(computersChoice);  //to check the choice
-//     return computersChoice;
-// }
-
-// function playRound(){
-//     let computer = computerDecision().toUpperCase();
-
-//     if(rock.addEventListener('click', computerDecision)){
-//         if (computer == "PAPER"){
-//             return 0;
-//         }
-//         else if(computer == "SCISSOR"){
-//             return 1;
-//         }
-//     }
-
-//     if (paper.addEventListener('click', computerDecision)){
-//         if(computer == "ROCK"){
-//             return 1;
-//         }
-//         else if(computer == "SCISSOR"){
-//             return 0;
-//         }
-//     }
-
-//     if (scissor.addEventListener('click', computerDecision)){
-//         if(computer == "PAPER"){
-//             return 1;
-//         }
-//         else if(computer == "ROCK"){
-//             return 0;
-//         }
-//     }
-// }
-
-// function game(){
-//     let computerScore = 0;
-//     let playerScore = 0;
-
-//     for (let i=0; i<5; i++){
-//         if(playRound() == 1){
-//             playerScore += 1;
-//             pScore.textContent = playerScore;
-//         }
-//         else if(playRound() == 0){
-//             computerScore += 1;
-//             cScore.textContent = computerScore;
-//         }
-//     }
-
-//     //final decision algorithm
-//     if(computerScore == playerScore){
-//         winner.textContent = 'Nobody';
-//     }
-//     else if(computerScore > playerScore){
-//         winner.textContent = 'Computer'
-//     }
-//     else{
-//         winner.textContent = 'Player';
-//     }
-// }
-
-// game();
-
-//Steps
-// 1. “choose one”
-// 2. click on icon/image
-// 3. then the round plays and the algorithm runs
-// 4. the function gives 0 or 1 for the result
-// 5. the return value is used to for value
-// 6. finally values are compared and the winner is decided
-
-
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissor = document.querySelector('.scissor');
@@ -97,6 +6,9 @@ let pScore = document.querySelector('#pscore');
 let cScore = document.querySelector('#cscore');
 let winner = document.querySelector('#winner');
 
+let playerHand = '';
+let computerScore = 0;
+let playerScore = 0;
 
 function computerChoice(){
     hands = ['rock', 'paper', 'scissor'];
@@ -105,23 +17,95 @@ function computerChoice(){
 }
 
 //function to play follow up to the event listener
-function game(){
-    const computerHand = computerChoice();
-    let playerHand = 'string';
+function playRound(){
+    let computerHand = computerChoice();
+    computerHand = computerHand.toUpperCase();
+    pcChoice.textContent = computerHand;
+    console.log(computerHand);
 
-    rock.addEventListener('click', function(){ 
-        playerHand = 'ROCK';
-    });
+    if (playerHand == "ROCK"){
+        if (computerHand == "SCISSOR"){
+            playerScore += 1;
+            return 1;
+        }
+        else if(computerHand == "PAPER"){
+            computerScore += 1;
+            return 0;
+        }
+    }
 
-    paper.addEventListener('click', function(){
-        playerHand = 'PAPER';
-    });
+    if (playerHand == "PAPER"){
+        if (computerHand == "ROCK"){
+            playerScore += 1;
+            return 1;
+        }
+        else if(computerHand == "SCISSOR"){
+            comptuerScore += 1;
+            return 0;
+        }
+    }
 
-    scissor.addEventListener('click', function(){
-        playerHand = 'SCISSOR';
-    });
+    if (playerHand == "SCISSOR"){
+        if (computerHand == "PAPER"){
+            playerScore += 1;
+            return 1;
+        }
+        else if(computerHand == "ROCK"){
+            computerScore += 1;
+            return 0;
+        }
+    }
 }
 
-rock.addEventListener('click', game());
-paper.addEventListener('click', game());
-scissor.addEventListener('click', game());
+function game(){
+    let finalist = '';
+    playRound();
+    cScore.textContent = playerScore;
+    pScore.textContent = computerScore;
+
+    if(playerScore > computerScore){
+        finalist = 'Player';
+    }
+    else if(computerScore > playerScore){
+        finalist = 'Computer';
+    }
+    else{
+        finalist = 'Nobody';
+    }
+
+    winner.textContent = finalist;
+}
+
+function finalWinner(){
+    let finalist = '';
+    if(playerScore > computerScore){
+        finalist = 'Player';
+    }
+    else if(computerScore > playerScore){
+        finalist = 'Computer';
+    }
+    else {
+        finalist = 'Nobody'
+    }
+
+    winner.textContent = finalist;
+}
+
+rock.addEventListener('click', () => {
+    game();
+    playerHand = 'ROCK';
+    console.log(playerHand);
+    finalWinner();
+});
+
+paper.addEventListener('click', () => {
+    game();
+    playerHand = 'PAPER';
+    console.log(playerHand);
+});
+
+scissor.addEventListener('click', () => {
+    game();
+    playerHand = 'SCISSOR';
+    console.log(playerHand);
+});
