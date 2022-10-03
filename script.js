@@ -21,8 +21,6 @@ function computerDecision(){
 
 function playRound(computerSelection){
     computerSelection = computerChoice();
-    pcChoice.textContent = computerSelection;
-
     let computer = computerSelection.toUpperCase();
 
     if(rock.addEventListener('click', computerDecision)){
@@ -60,14 +58,15 @@ function game(){
     for (var i=0; i<5; i++){
         if(playRound() == 1){
             playerScore += 1;
+            pScore = playerScore;
         }
         else{
             computerScore += 1;
+            cScore = computerScore;
         }
     }
 
 }
-
 
 game();
 
